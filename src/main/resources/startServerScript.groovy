@@ -8,7 +8,7 @@ import org.vertx.groovy.core.eventbus.EventBus
 // File Service
 container.deployVerticle("groovy:org.rtosm.file.FileFinderVerticle")
 // Details downloader Verticle
-container.deployVerticle("groovy:org.rtosm.loader.DownloadChangeSetsVerticle")
+container.deployVerticle("groovy:org.rtosm.loader.DownloadChangeSetVerticle")
 // "Is there ChangeSet" Verticle
 container.deployVerticle("groovy:org.rtosm.loader.ChangesetLoaderVerticle")
 // Time orchetration 

@@ -1,11 +1,9 @@
 package org.rtosm.test.loader;
 
-import java.util.List;
-
 import org.junit.Test;
-import org.rtosm.loader.ChangesetLoaderVerticle;
+
+import org.rtosm.loader.DownloadChangeSetVerticle;
 import org.vertx.java.core.AsyncResult;
-import org.vertx.java.core.AsyncResultHandler;
 import org.vertx.java.core.Handler;
 import org.vertx.java.core.eventbus.Message;
 import org.vertx.java.core.json.JsonObject;
@@ -30,17 +28,18 @@ import static org.vertx.testtools.VertxAssert.*;
  *
  * @author <a href="http://tfox.org">Tim Fox</a>
  */
-public class ChangesetLoaderVerticleTest extends TestVerticle {
+public class DownloadChangesetVerticleTest extends TestVerticle {
 
 	@Test
 	public void TestVerticle() {
-		vertx.eventBus().send("load-changesets", "",
-				new Handler<Message<JsonObject>>() {
+		vertx.eventBus().send("download-changeset-by-id", "19448623",
+				new Handler<Message<String>>() {
 					@Override
-					public void handle(Message<JsonObject> msg) {
+					public void handle(Message<String> msg) {
 						container.logger().info(
 								"msg received = " + msg.body());
-						assertTrue(msg.body().getElement("ids").asArray().size()>0);
+						assertTrue(msg.body().toString().length()>0);
+
 						testComplete();
 					}
 				});
@@ -52,7 +51,7 @@ public class ChangesetLoaderVerticleTest extends TestVerticle {
 		initialize();
 
 		container.deployVerticle(
-				"groovy:" + ChangesetLoaderVerticle.class.getName(),
+				"groovy:" + DownloadChangeSetVerticle.class.getName(),
 				new Handler<AsyncResult<String>>() {
 
 					@Override

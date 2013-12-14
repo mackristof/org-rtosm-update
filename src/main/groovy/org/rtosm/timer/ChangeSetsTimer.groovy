@@ -3,6 +3,14 @@ package org.rtosm.timer
 
 import org.vertx.groovy.platform.Verticle
 
+/**
+ * Verticle to start changeset loader every minute
+ * and regularly publish these results to client
+ * @author https://github.com/mackristof
+ *
+ */
+
+
 class ChangeSetsTimer extends Verticle {
 	
 	def start() {

@@ -12,10 +12,10 @@ import groovy.util.Node
 
 /**
  * Verticle listen to "download-changeset-by-id" and then search for details and then publish details in GeoJson Format 
- * @author christophem
+ * @author https://github.com/mackristof
  *
  */
-class DownloadChangeSetsVerticle extends Verticle {
+class DownloadChangeSetVerticle extends Verticle {
 	def start() {
 		vertx.eventBus.registerHandler("download-changeset-by-id"){ message ->
 			container.logger.info("download-changeset-by-id received msg : $message.body")
@@ -36,7 +36,9 @@ class DownloadChangeSetsVerticle extends Verticle {
 					}	
 				}
 				vertx.eventBus.publish("get-changeset",builder.toString())
+
 			}
+            message.reply(osmChange.changeset.'@id'.toString())
 		}
 	}
 

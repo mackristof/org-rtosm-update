@@ -10,7 +10,7 @@ import org.vertx.groovy.platform.Verticle
 
 /**
  * Verticle listen to "load-changesets" and then search Changesets and reply ChangeSets for the last minute
- * @author christophem
+ * @author https://github.com/mackristof
  *
  */
 class ChangesetLoaderVerticle extends Verticle {

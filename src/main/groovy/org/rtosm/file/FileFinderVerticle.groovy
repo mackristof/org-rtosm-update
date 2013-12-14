@@ -3,7 +3,7 @@ package org.rtosm.file
 import org.vertx.groovy.platform.Verticle
 
 /**
- * Created by christophem on 09/11/2013.
+ * Created by https://github.com/mackristof on 09/11/2013.
  */
 class FileFinderVerticle extends Verticle {
 
